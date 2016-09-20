@@ -1,15 +1,11 @@
 package db_manager;
 
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Toolkit;
-import java.sql.ResultSet;
+import java.awt.EventQueue;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.WindowConstants;
 
 /**
  * 
@@ -19,77 +15,197 @@ import javax.swing.WindowConstants;
  *
  */
 public class GUI {
-	JButton backButton, nextButton, createButton, updateButton, deleteButton, searchButton, 
-	resetSearchButton, goToLastButton, goToFirstButton;
-	ResultSet rs;
-	JTextField nameTextField, lastNameTextField, emailTextField, searchTextField;
 	JFrame f;
-	JLabel firstNameLabel, lastNameLabel, emailAddressLabel, infoLabel, searchByNameLabel;
+	JTextField ssnTextField, bDateTextField, nameTextField, addressTextField, sexTextField, worksForTextField,
+			managesTextField, supervisesTextField, searchTextField, salaryTextField;
+
+	JButton backButton, nextButton, goToFirstButton, goToLastButton, updateButton, deleteButton, searchButton,
+			resetSearchButton, createButton;
+
+	JLabel ssnLabel, bDateLabel, nameLabel, addressLabel, sexLabel, worksForLabel, managesLabel, supervisesLabel,
+			searchByNameLabel, salaryLabel;
+
+	JPanel panel_1, panel_2, panel_3, panel;
 
 	/**
-	 * Build a new GUI
+	 * Launch the application.
+	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					GUI window = new GUI();
+//					window.f.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+	/**
+	 * Create the application.
 	 */
 	public GUI() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
 		f = new JFrame();
-		f.setTitle("Web Members Database Manager");
+		f.setTitle("Manage Employee's Application");
+		f.setBounds(100, 100, 635, 450);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.getContentPane().setLayout(null);
 
-		firstNameLabel = new JLabel("First Name: ");
-		nameTextField = new JTextField(20);
+		panel_1 = new JPanel();
+		panel_1.setBounds(68, 65, 240, 177);
+		f.getContentPane().add(panel_1);
 
-		lastNameLabel = new JLabel("Last Name: ");
-		lastNameTextField = new JTextField(20);
+		panel_2 = new JPanel();
+		panel_1.add(panel_2);
 
-		emailAddressLabel = new JLabel("Email Address: ");
-		emailTextField = new JTextField(20);
+		ssnLabel = new JLabel("SSN");
+		panel_2.add(ssnLabel);
 
-		infoLabel = new JLabel("Enter new member info into the text fields above");
+		ssnTextField = new JTextField();
+		ssnTextField.setColumns(10);
+		panel_2.add(ssnTextField);
 
-		searchByNameLabel = new JLabel("Enter name to search");
-		searchTextField = new JTextField(15);
+		panel_3 = new JPanel();
+		panel_1.add(panel_3);
 
-		backButton = new JButton("Previous");
+		bDateLabel = new JLabel("Date");
+		panel_3.add(bDateLabel);
+
+		bDateTextField = new JTextField();
+		bDateTextField.setColumns(10);
+		panel_3.add(bDateTextField);
+
+		JPanel panel_5 = new JPanel();
+		panel_1.add(panel_5);
+
+		addressLabel = new JLabel("Address");
+		panel_5.add(addressLabel);
+
+		addressTextField = new JTextField();
+		addressTextField.setColumns(10);
+		panel_5.add(addressTextField);
+
+		panel = new JPanel();
+		panel_1.add(panel);
+
+		salaryLabel = new JLabel("Salary");
+		panel.add(salaryLabel);
+
+		salaryTextField = new JTextField();
+		salaryTextField.setColumns(10);
+		panel.add(salaryTextField);
+
+		JPanel panel_6 = new JPanel();
+		panel_6.setBounds(335, 65, 227, 177);
+		f.getContentPane().add(panel_6);
+
+		JPanel panel_8 = new JPanel();
+		panel_6.add(panel_8);
+
+		sexLabel = new JLabel("Sex     ");
+		panel_8.add(sexLabel);
+
+		sexTextField = new JTextField();
+		sexTextField.setColumns(10);
+		panel_8.add(sexTextField);
+
+		JPanel panel_9 = new JPanel();
+		panel_6.add(panel_9);
+
+		worksForLabel = new JLabel("Works For");
+		panel_9.add(worksForLabel);
+
+		worksForTextField = new JTextField();
+		worksForTextField.setColumns(10);
+		panel_9.add(worksForTextField);
+
+		JPanel panel_10 = new JPanel();
+		panel_6.add(panel_10);
+
+		managesLabel = new JLabel("Manages");
+		panel_10.add(managesLabel);
+
+		managesTextField = new JTextField();
+		managesTextField.setColumns(10);
+		panel_10.add(managesTextField);
+
+		JPanel panel_11 = new JPanel();
+		panel_6.add(panel_11);
+
+		supervisesLabel = new JLabel("Supervises");
+		panel_11.add(supervisesLabel);
+
+		supervisesTextField = new JTextField();
+		supervisesTextField.setColumns(10);
+		panel_11.add(supervisesTextField);
+
+		JPanel panel_12 = new JPanel();
+		panel_12.setBounds(120, 254, 409, 66);
+		f.getContentPane().add(panel_12);
+
+		backButton = new JButton("Back");
+		panel_12.add(backButton);
+
 		nextButton = new JButton("Next");
+		panel_12.add(nextButton);
+
+		goToFirstButton = new JButton("Go to First");
+		panel_12.add(goToFirstButton);
+
+		goToLastButton = new JButton("Go to Last");
+		panel_12.add(goToLastButton);
+
 		createButton = new JButton("Create");
+		panel_12.add(createButton);
+
 		updateButton = new JButton("Update");
+		panel_12.add(updateButton);
+
 		deleteButton = new JButton("Delete");
+		panel_12.add(deleteButton);
+
+		JPanel panel_13 = new JPanel();
+		panel_13.setBounds(33, 347, 282, 43);
+		f.getContentPane().add(panel_13);
+
+		searchByNameLabel = new JLabel("Search By Name:");
+		panel_13.add(searchByNameLabel);
+		searchTextField = new JTextField();
+		searchTextField.setColumns(10);
+		panel_13.add(searchTextField);
+
+		JPanel panel_14 = new JPanel();
+		panel_14.setBounds(311, 347, 282, 43);
+		f.getContentPane().add(panel_14);
+
+		JPanel panel_15 = new JPanel();
+		panel_14.add(panel_15);
+
 		searchButton = new JButton("Search");
+		panel_15.add(searchButton);
+
 		resetSearchButton = new JButton("Reset Search");
-		goToFirstButton = new JButton("Go to First"); 
-		goToLastButton = new JButton("Go to Last"); 
+		panel_14.add(resetSearchButton);
 
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.add(backButton);
-		buttonPanel.add(nextButton);
-		buttonPanel.add(createButton);
-		buttonPanel.add(updateButton);
-		buttonPanel.add(deleteButton);
-		buttonPanel.add(goToFirstButton);
-		buttonPanel.add(goToLastButton);
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(150, 17, 331, 36);
+		f.getContentPane().add(panel_4);
 
-		JPanel searchPanel = new JPanel();
-		searchPanel.add(searchByNameLabel);
-		searchPanel.add(searchTextField);
-		searchPanel.add(searchButton);
-		searchPanel.add(resetSearchButton);
+		nameLabel = new JLabel("Name");
+		panel_4.add(nameLabel);
 
-		JPanel mainPanel = new JPanel(new GridLayout(9, 2));
-
-		mainPanel.add(firstNameLabel);
-		mainPanel.add(nameTextField);
-		mainPanel.add(lastNameLabel);
-		mainPanel.add(lastNameTextField);
-		mainPanel.add(emailAddressLabel);
-		mainPanel.add(emailTextField);
-		mainPanel.add(infoLabel);
-		mainPanel.add(buttonPanel);
-		mainPanel.add(searchPanel);
-		f.add(mainPanel);
-		f.setVisible(true);
-		f.pack();
-		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		//center the frame next
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		f.setLocation(dim.width/2-f.getSize().width/2, dim.height/2-f.getSize().height/2);
+		nameTextField = new JTextField();
+		nameTextField.setColumns(20);
+		panel_4.add(nameTextField);
 	}
 
 }
