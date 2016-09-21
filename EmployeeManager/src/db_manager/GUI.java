@@ -1,6 +1,5 @@
 package db_manager;
 
-import java.awt.EventQueue;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,7 +19,7 @@ public class GUI {
 			managesTextField, supervisesTextField, searchTextField, salaryTextField;
 
 	JButton backButton, nextButton, goToFirstButton, goToLastButton, updateButton, deleteButton, searchButton,
-			resetSearchButton, createButton;
+			resetSearchButton, createButton, exitButton, clearInfoButton;
 
 	JLabel ssnLabel, bDateLabel, nameLabel, addressLabel, sexLabel, worksForLabel, managesLabel, supervisesLabel,
 			searchByNameLabel, salaryLabel;
@@ -28,34 +27,18 @@ public class GUI {
 	JPanel panel_1, panel_2, panel_3, panel;
 
 	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					GUI window = new GUI();
-//					window.f.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
+	 * Create the GUI.
 	 */
 	public GUI() {
-		initialize();
+		buildGui();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Build the GUI
 	 */
-	private void initialize() {
+	private void buildGui() {
 		f = new JFrame();
-		f.setTitle("Manage Employee's Application");
+		f.setTitle(" Employee Manager Application");
 		f.setBounds(100, 100, 635, 450);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.getContentPane().setLayout(null);
@@ -66,7 +49,7 @@ public class GUI {
 
 		panel_2 = new JPanel();
 		panel_1.add(panel_2);
-
+		
 		ssnLabel = new JLabel("SSN");
 		panel_2.add(ssnLabel);
 
@@ -149,7 +132,7 @@ public class GUI {
 		panel_11.add(supervisesTextField);
 
 		JPanel panel_12 = new JPanel();
-		panel_12.setBounds(120, 254, 409, 66);
+		panel_12.setBounds(100, 254, 500, 66);
 		f.getContentPane().add(panel_12);
 
 		backButton = new JButton("Back");
@@ -163,15 +146,22 @@ public class GUI {
 
 		goToLastButton = new JButton("Go to Last");
 		panel_12.add(goToLastButton);
-
+		
+		
+		clearInfoButton = new JButton("Clear");
+		panel_12.add(clearInfoButton);
+		
 		createButton = new JButton("Create");
 		panel_12.add(createButton);
-
+		
 		updateButton = new JButton("Update");
 		panel_12.add(updateButton);
 
 		deleteButton = new JButton("Delete");
 		panel_12.add(deleteButton);
+		
+		exitButton = new JButton("Exit");
+		panel_12.add(exitButton);
 
 		JPanel panel_13 = new JPanel();
 		panel_13.setBounds(33, 347, 282, 43);
@@ -189,7 +179,7 @@ public class GUI {
 
 		JPanel panel_15 = new JPanel();
 		panel_14.add(panel_15);
-
+		
 		searchButton = new JButton("Search");
 		panel_15.add(searchButton);
 
